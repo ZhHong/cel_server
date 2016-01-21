@@ -20,6 +20,7 @@ local servername_list = {}
 local user_online = {}
 local user_login = {}
 
+-- step2 check client send token
 function server.auth_handler(token)
 	-- the token is base64(user)@base64(server):base64(password)
 
@@ -35,13 +36,15 @@ function server.auth_handler(token)
 	if data.platform == "test" then
 		return data.server, data.platform..data.user
 	end
-
+	-- chose msg server to login
 	local result, err = util.get_msg_data(util.call_route(".la_route", nil, 301, data))
 	if not result then error(err) end
 
 	return data.server, data.platform..result.user
 end
 
+-- login handler after authh_handler
+-- if not multilogin this function only be call once
 function server.login_handler(server, uid, secret)
 	print(string.format("%s@%s is login, secret is %s", uid, server, crypt.hexencode(secret)))
 	
@@ -80,6 +83,7 @@ function server.login_handler(server, uid, secret)
 	return string.format("%s:%d:%s:%d", call_msgserver.client_host, call_msgserver.client_port, uid, subid)
 end
 
+-- use to recive inside skynet commond
 local CMD = {}
 
 function CMD.register_gate(data)

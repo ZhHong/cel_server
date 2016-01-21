@@ -1,6 +1,6 @@
 local skynet = require "skynet"
 local jsonpack = require "jsonpack"
-
+--  lua class like
 local util = {}
 
 function util.call_route(route_name, server_name, msg_id, data)
