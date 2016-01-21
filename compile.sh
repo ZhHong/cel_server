@@ -1,6 +1,6 @@
 #!/bin/sh
-echo "---get skynet---"
-git submodule update --init
+"echo '---get skynet---'"
+"git submodule update --init"
 
 echo "---make skynet---"
 cd 3rd/skynet

@@ -2,7 +2,7 @@ local skynet = require "skynet"
 local configtable = require "configtable"
 local logdblist = require "config_logdblist"
 
-
+-- get configer sets
 local max_client = tonumber(skynet.getenv "maxclient")
 local listen_port1 = tonumber(skynet.getenv "listenport")
 local listen_port2 = tonumber(skynet.getenv "systemport")

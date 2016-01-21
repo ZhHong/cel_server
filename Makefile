@@ -1,6 +1,6 @@
 include platform.mk
 
-LUA_CLIB_PATH ?= skygame/luaclib
+LUA_CLIB_PATH ?= cel_game/luaclib
 
 SKYSERVER_BUILD_PATH ?= .
 
