@@ -10,7 +10,7 @@ CFLAGS = -g -O2 -Wall -I$(LUA_INC) $(MYCFLAGS)
 
 LUA_INC ?= 3rd/skynet/3rd/lua
 
-# skyserver
+# cel_server
 
 LUA_CLIB = cjson
 

@@ -8,17 +8,20 @@ end
 local socket = require "clientsocket"
 local proto = require "proto"
 local sproto = require "sproto"
-
+-- pack package
 local host = sproto.new(proto.s2c):host "package"
 local request = host:attach(sproto.new(proto.c2s))
 
+-- assert is check expression if false abort instance or do
 local fd = assert(socket.connect("127.0.0.1", 8888))
 
+-- send package
 local function send_package(fd, pack)
 	local package = string.pack(">s2", pack)
 	socket.send(fd, package)
 end
 
+-- unpack package
 local function unpack_package(text)
 	local size = #text
 	if size < 2 then
@@ -32,6 +35,7 @@ local function unpack_package(text)
 	return text:sub(3,2+s), text:sub(3+s)
 end
 
+-- recv_package
 local function recv_package(last)
 	local result
 	result, last = unpack_package(last)
@@ -49,7 +53,7 @@ local function recv_package(last)
 end
 
 local session = 0
-
+-- send request
 local function send_request(name, args)
 	session = session + 1
 	local str = request(name, args, session)
@@ -59,6 +63,7 @@ end
 
 local last = ""
 
+-- print request
 local function print_request(name, args)
 	print("REQUEST", name)
 	if args then
@@ -68,6 +73,7 @@ local function print_request(name, args)
 	end
 end
 
+-- print response
 local function print_response(session, args)
 	print("RESPONSE", session)
 	if args then
@@ -77,6 +83,7 @@ local function print_response(session, args)
 	end
 end
 
+-- print package
 local function print_package(t, ...)
 	if t == "REQUEST" then
 		print_request(...)
@@ -86,6 +93,7 @@ local function print_package(t, ...)
 	end
 end
 
+-- 
 local function dispatch_package()
 	while true do
 		local v
