@@ -45,7 +45,7 @@ local function server_login(token)
 	return function(so)
 		if token then
 			local request_id = get_request_id()
-			so:request(netpack.pack_string(tostring(request_id).."+"..token), request_id)
+			so:request(netpack.push_data(tostring(request_id).."+"..token), request_id)
 		end
 	end
 end
@@ -59,7 +59,7 @@ function routechannel.connect(server_conf)
 	}
 
 	-- try connect first only once
-	--channel:connect(true)
+	-- channel:connect(true)
 	return setmetatable( { channel }, meta )
 end
 
@@ -73,7 +73,7 @@ function command:send(data)
 
 	local request_id = get_request_id()
 
-	return fd:request(netpack.pack_string(tostring(request_id).."+"..data), request_id)
+	return fd:request(netpack.push_data(tostring(request_id).."+"..data), request_id)
 end
 
 return routechannel

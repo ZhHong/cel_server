@@ -9,7 +9,7 @@ local host
 local send_request
 
 local CMD = {}
-local REQUEST = {}
+local REQUEST = {} -- like REQUEST class following is the function
 local client_fd
 
 function REQUEST:get()
@@ -32,8 +32,8 @@ function REQUEST:quit()
 end
 
 local function request(name, args, response)
-	local f = assert(REQUEST[name])
-	local r = f(args)
+	local f = assert(REQUEST[name]) --get REQUEST function
+	local r = f(args) -- call REQUEST FUNCTION
 	if response then
 		return response(r)
 	end
@@ -66,7 +66,7 @@ skynet.register_protocol {
 		end
 	end
 }
-
+--  CMD class function
 function CMD.start(conf)
 	local fd = conf.client
 	local gate = conf.gate
