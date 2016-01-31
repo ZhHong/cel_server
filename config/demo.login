@@ -1,0 +1,17 @@
+root = "./"
+thread = 2
+logger = root.."../../logs/demo.login.log"
+daemon = root.."../../logs/demo.login.pid"
+harbor = 0
+luaservice = root.."service/?.lua;"..root.."../../cel_game/demo/?.lua;"..root.."../../cel_game/demo/login_server/?.lua;"..root.."../../cel_game/service/?.lua"
+bootstrap = "snlua bootstrap"
+lualoader = "lualib/loader.lua"
+cpath = root.."cservice/?.so;"
+snax = root.."../../cel_game/demo/?.lua;"..root.."../../cel_game/demo/login_server/?.lua"
+lua_path = root.."lualib/?.lua;"..root.."lualib/?/init.lua;"..root.."../../cel_game/lualib/?.lua;"..root.."../../cel_game/demo/?.lua;"..root.."../../cel_game/config/?.lua;"..root.."../../cel_game/demo/config/?.lua;"..root.."../../cel_game/demo/?.lua;"..root.."../../cel_game/demo/login_server/?.lua;"..root.."../../3rd/lualogging/?.lua"
+lua_cpath = root.."luaclib/?.so;"..root.."../../cel_game/luaclib/?.so"
+preload = root.."../../cel_game/demo/preload.lua"
+start = "login_server_main"
+maxclient = 4096
+listenport = 8101
+systemport = 8102

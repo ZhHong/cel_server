@@ -1,0 +1,17 @@
+root = "./"
+thread = 2  -- not more than cpu core
+logger = root.."../../logs/demo.app.log" -- log floder
+daemon = root.."../../logs/demo.app.pid" -- run in background
+harbor = 0
+luaservice = root.."service/?.lua;"..root.."../../cel_game/demo/?.lua;"..root.."../../cel_game/demo/app_server/?.lua;"..root.."../../cel_game/service/?.lua"
+bootstrap = "snlua bootstrap"
+lualoader = "lualib/loader.lua"
+cpath = root.."cservice/?.so;"  -- c .so location
+snax = root.."../../cel_game/demo/?.lua;"..root.."../../cel_game/demo/app_server/?.lua"
+lua_path = root.."lualib/?.lua;"..root.."lualib/?/init.lua;"..root.."../../cel_game/lualib/?.lua;"..root.."../../cel_game/demo/?.lua;"..root.."../../cel_game/config/?.lua;"..root.."../../cel_game/demo/config/?.lua;"..root.."../../cel_game/demo/?.lua;"..root.."../../cel_game/demo/app_server/?.lua;"..root.."../../3rd/lualogging/?.lua"
+lua_cpath = root.."luaclib/?.so;"..root.."../../cel_game/luaclib/?.so"
+preload = root.."../../cel_game/demo/preload.lua"
+start = "app_server_main"
+maxclient = 4096
+systemport = 8302
+webport = 8001
