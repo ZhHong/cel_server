@@ -30,7 +30,22 @@ set 3 {
 	}
 }
 
-quit 4 {}
+userinfo 4 {
+	request {
+		who 0 : integer
+	}
+	response {
+		ok 0 : integer
+		uid 1 : integer
+		uname 1: string
+		sex 3 : integer
+		level 4 : integer
+		exp 5 : integer
+		gold 6 : integer
+	}
+}
+
+quit 5 {}
 
 ]]
 

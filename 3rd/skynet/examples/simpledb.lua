@@ -14,6 +14,16 @@ function command.SET(key, value)
 	return last
 end
 
+function command.USERINFO(key,value)
+	initSimpleDB()
+	local last = db[key]
+	return last
+end
+
+function initSimpleDB()
+	db['30001']=
+end
+
 skynet.start(function()
 	skynet.dispatch("lua", function(session, address, cmd, ...)
 		local f = command[string.upper(cmd)]

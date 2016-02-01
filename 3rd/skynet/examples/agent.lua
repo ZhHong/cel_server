@@ -27,6 +27,11 @@ function REQUEST:handshake()
 	return { msg = "Welcome to skynet, I will send heartbeat every 5 sec." }
 end
 
+function REQUEST:userinfo()
+	print("user_info==========",self.who)
+	local r = skynet.call("SIMPLEDB","lua","userinfo",self.who)
+end
+
 function REQUEST:quit()
 	skynet.call(WATCHDOG, "lua", "close", client_fd)
 end
